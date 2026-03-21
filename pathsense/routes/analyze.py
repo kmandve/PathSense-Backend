@@ -1,5 +1,4 @@
 import base64
-import torch
 from fastapi import APIRouter, Request, HTTPException, UploadFile
 import io
 from PIL import Image, UnidentifiedImageError
@@ -13,18 +12,10 @@ router = APIRouter()
 
 @router.get("/health")
 async def health(request: Request):
-    model_loaded = (
-        hasattr(request.app.state, "vision_model")
-        and request.app.state.vision_model is not None
-    )
-    if not model_loaded:
-        raise HTTPException(status_code=503, detail="Model not loaded")
-    vram_mb = (
-        torch.cuda.memory_reserved() / 1024 ** 2
-        if torch.cuda.is_available()
-        else 0.0
-    )
-    return {"status": "ok", "model_loaded": True, "vram_reserved_mb": vram_mb}
+    tts_loaded = hasattr(request.app.state, "tts_voice") and request.app.state.tts_voice is not None
+    if not tts_loaded:
+        raise HTTPException(status_code=503, detail="TTS not loaded")
+    return {"status": "ok", "tts_loaded": True}
 
 
 @router.post("/analyze")
