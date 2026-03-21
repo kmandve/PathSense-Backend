@@ -45,3 +45,29 @@ def test_image_path():
 def test_image_bytes(test_image_path):
     with open(test_image_path, "rb") as f:
         return f.read()
+
+
+@pytest.fixture
+def mock_tts_voice():
+    """Mock Piper TTS voice for tests — no .onnx file needed."""
+    from unittest.mock import MagicMock
+    import wave
+
+    voice = MagicMock()
+
+    def fake_synthesize_to_file(text, wav_file):
+        wav_file.setnchannels(1)
+        wav_file.setsampwidth(2)
+        wav_file.setframerate(22050)
+        wav_file.writeframes(b"\x00\x00" * 2205)  # 0.1s silence
+
+    voice.synthesize_to_file.side_effect = fake_synthesize_to_file
+    return voice
+
+
+@pytest.fixture
+def app_with_tts(mock_tts_voice):
+    """App with mocked TTS voice in state — no .onnx file needed."""
+    app.state.tts_voice = mock_tts_voice
+    yield app
+    app.state.tts_voice = None

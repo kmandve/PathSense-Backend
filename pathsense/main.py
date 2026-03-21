@@ -1,29 +1,18 @@
 from contextlib import asynccontextmanager
+from dotenv import load_dotenv
+load_dotenv()
 from fastapi import FastAPI
-from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
-from pathsense.config import MODEL_ID, TOKENIZER_ID, TOKENIZER_REVISION
+from piper.voice import PiperVoice
+from pathsense.config import PIPER_VOICE_MODEL_PATH
 from pathsense.routes.analyze import router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: load model once (INF-02)
-    app.state.vision_model = AutoModelForCausalLM.from_pretrained(
-        MODEL_ID,
-        trust_remote_code=True,
-        device_map={"": "cuda"},  # INF-03: CUDA acceleration
-    )
-    app.state.tokenizer = AutoTokenizer.from_pretrained(
-        TOKENIZER_ID,
-        revision=TOKENIZER_REVISION,
-        trust_remote_code=True,
-    )
+    # Load Piper TTS voice once at startup (CPU ONNX — leaves VRAM for vision model)
+    app.state.tts_voice = PiperVoice.load(PIPER_VOICE_MODEL_PATH)
     yield
-    # Shutdown: cleanup
-    del app.state.vision_model
-    del app.state.tokenizer
-    torch.cuda.empty_cache()
+    # No explicit cleanup needed for ONNX CPU model
 
 
 app = FastAPI(title="PathSense", lifespan=lifespan)
