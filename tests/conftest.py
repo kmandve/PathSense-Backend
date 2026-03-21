@@ -1,3 +1,4 @@
+import os
 import pytest
 from unittest.mock import MagicMock, AsyncMock
 from httpx import AsyncClient, ASGITransport
@@ -33,3 +34,14 @@ async def async_client(app_with_model):
     transport = ASGITransport(app=app_with_model)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         yield client
+
+
+@pytest.fixture
+def test_image_path():
+    return os.path.join(os.path.dirname(__file__), "fixtures", "test_image.jpg")
+
+
+@pytest.fixture
+def test_image_bytes(test_image_path):
+    with open(test_image_path, "rb") as f:
+        return f.read()
