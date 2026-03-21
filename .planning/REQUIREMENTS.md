@@ -23,9 +23,9 @@
 
 ### Text-to-Speech
 
-- [ ] **TTS-01**: Piper TTS converts description text to spoken audio locally on CPU
-- [ ] **TTS-02**: Audio output is in a standard format (WAV) playable by headphones
-- [ ] **TTS-03**: TTS synthesis completes in under 1 second for navigation-length text
+- [x] **TTS-01**: Piper TTS converts description text to spoken audio locally on CPU
+- [x] **TTS-02**: Audio output is in a standard format (WAV) playable by headphones
+- [x] **TTS-03**: TTS synthesis completes in under 1 second for navigation-length text
 
 ### API Response
 
@@ -91,9 +91,9 @@
 | INF-02 | Phase 1 | Complete |
 | INF-03 | Phase 1 | Complete |
 | INF-04 | Phase 1 | Complete |
-| TTS-01 | Phase 2 | Pending |
-| TTS-02 | Phase 2 | Pending |
-| TTS-03 | Phase 2 | Pending |
+| TTS-01 | Phase 2 | Complete |
+| TTS-02 | Phase 2 | Complete |
+| TTS-03 | Phase 2 | Complete |
 | API-01 | Phase 3 | Pending |
 | API-02 | Phase 3 | Pending |
 | API-03 | Phase 3 | Pending |

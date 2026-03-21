@@ -13,7 +13,7 @@ PathSense is a four-phase build that moves risk-first: prove the GPU model loads
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - GPU model loads, image ingested, navigation-focused text produced (completed 2026-03-21)
-- [ ] **Phase 2: TTS Integration** - Navigation text converted to spoken WAV audio locally
+- [x] **Phase 2: TTS Integration** - Navigation text converted to spoken WAV audio locally (completed 2026-03-21)
 - [ ] **Phase 3: HTTP API Layer** - Full POST /analyze endpoint returns text + audio in one response
 - [ ] **Phase 4: Fallback and Hardening** - GPT-4o fallback, quality gate, and safe error path protect the demo
 
@@ -44,10 +44,10 @@ Plans:
   1. Piper TTS converts a 15-word navigation description to WAV bytes without blocking the event loop
   2. The output WAV file plays audibly through headphones (standard 16-bit PCM, 22050Hz)
   3. Synthesis completes in under 1 second measured from text input to WAV bytes returned
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
-- [ ] 02-01-PLAN.md — Piper TTS service (synthesize + synthesize_async), lifespan voice loading, config constants, tests
+- [x] 02-01-PLAN.md — Piper TTS service (synthesize + synthesize_async), lifespan voice loading, config constants, tests
 
 ### Phase 3: HTTP API Layer
 **Goal**: A single POST /analyze endpoint accepts an image, runs the full local pipeline, and returns text description plus base64 audio in one JSON response under 3 seconds
@@ -86,6 +86,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-21 |
-| 2. TTS Integration | 0/1 | Not started | - |
+| 2. TTS Integration | 1/1 | Complete   | 2026-03-21 |
 | 3. HTTP API Layer | 0/2 | Not started | - |
 | 4. Fallback and Hardening | 0/1 | Not started | - |
