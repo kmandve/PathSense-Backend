@@ -15,7 +15,11 @@ def synthesize(voice: PiperVoice, text: str) -> bytes:
     """
     buf = io.BytesIO()
     with wave.open(buf, "wb") as wav_file:
-        voice.synthesize_to_file(text, wav_file)
+        wav_file.setnchannels(1)
+        wav_file.setsampwidth(2)  # 16-bit
+        wav_file.setframerate(22050)
+        for audio_chunk in voice.synthesize(text):
+            wav_file.writeframes(audio_chunk.audio_int16_bytes)
     return buf.getvalue()
 
 

@@ -47,7 +47,7 @@ async def analyze(request: Request, file: UploadFile):
             detail="File is not a valid image or is corrupted"
         )
 
-    # Run GPT-4o vision inference
+    # Run vision inference
     try:
         description = await run_inference_async(img)
     except Exception as e:
