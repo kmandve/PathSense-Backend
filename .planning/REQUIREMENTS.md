@@ -13,7 +13,7 @@
 
 ### Vision Analysis
 
-- [ ] **VIS-01**: Moondream2 4-bit quantized model loads on GTX 1650 within 4GB VRAM budget
+- [x] **VIS-01**: Moondream2 4-bit quantized model loads on GTX 1650 within 4GB VRAM budget
 - [ ] **VIS-02**: Model analyzes image and produces navigation-focused text description
 - [ ] **VIS-03**: Descriptions identify obstacles, doors, steps, signs, and people
 - [ ] **VIS-04**: Descriptions include distance/proximity language ("2 meters ahead", "on your left")
@@ -42,10 +42,10 @@
 
 ### Infrastructure
 
-- [ ] **INF-01**: FastAPI server with single uvicorn worker (VRAM constraint)
-- [ ] **INF-02**: Models load once at startup via lifespan handler, not per-request
-- [ ] **INF-03**: CUDA acceleration enabled for vision model inference
-- [ ] **INF-04**: Health check endpoint confirms model is loaded and GPU is available
+- [x] **INF-01**: FastAPI server with single uvicorn worker (VRAM constraint)
+- [x] **INF-02**: Models load once at startup via lifespan handler, not per-request
+- [x] **INF-03**: CUDA acceleration enabled for vision model inference
+- [x] **INF-04**: Health check endpoint confirms model is loaded and GPU is available
 
 ## v2 Requirements
 
@@ -80,17 +80,17 @@
 | IMG-01 | Phase 1 | Pending |
 | IMG-02 | Phase 1 | Pending |
 | IMG-03 | Phase 1 | Pending |
-| VIS-01 | Phase 1 | Pending |
+| VIS-01 | Phase 1 | Complete |
 | VIS-02 | Phase 1 | Pending |
 | VIS-03 | Phase 1 | Pending |
 | VIS-04 | Phase 1 | Pending |
 | VIS-05 | Phase 1 | Pending |
 | VIS-06 | Phase 1 | Pending |
 | VIS-07 | Phase 1 | Pending |
-| INF-01 | Phase 1 | Pending |
-| INF-02 | Phase 1 | Pending |
-| INF-03 | Phase 1 | Pending |
-| INF-04 | Phase 1 | Pending |
+| INF-01 | Phase 1 | Complete |
+| INF-02 | Phase 1 | Complete |
+| INF-03 | Phase 1 | Complete |
+| INF-04 | Phase 1 | Complete |
 | TTS-01 | Phase 2 | Pending |
 | TTS-02 | Phase 2 | Pending |
 | TTS-03 | Phase 2 | Pending |

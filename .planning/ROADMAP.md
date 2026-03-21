@@ -29,10 +29,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Descriptions include distance or direction language ("ahead", "left", "right", "meters")
   4. Descriptions are under 15 words and end with a directional framing ("clear path", "obstacle right")
   5. 20 sequential inference calls complete without OOM error or VRAM growth
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffold, dependencies, FastAPI app with lifespan model loading, health check, test infrastructure
+- [x] 01-01-PLAN.md — Project scaffold, dependencies, FastAPI app with lifespan model loading, health check, test infrastructure
 - [ ] 01-02-PLAN.md — Vision service with navigation prompt (D-01..D-06), inference function, run_in_executor wiring
 - [ ] 01-03-PLAN.md — POST /analyze endpoint with image validation, integration tests, soak test (20 sequential inferences)
 
@@ -85,7 +85,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Not started | - |
+| 1. Foundation | 1/3 | In Progress|  |
 | 2. TTS Integration | 0/1 | Not started | - |
 | 3. HTTP API Layer | 0/2 | Not started | - |
 | 4. Fallback and Hardening | 0/1 | Not started | - |
