@@ -44,10 +44,10 @@ Plans:
   1. Piper TTS converts a 15-word navigation description to WAV bytes without blocking the event loop
   2. The output WAV file plays audibly through headphones (standard 16-bit PCM, 22050Hz)
   3. Synthesis completes in under 1 second measured from text input to WAV bytes returned
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 02-01: Piper TTS service with async subprocess, WAV output, and latency measurement
+- [ ] 02-01-PLAN.md — Piper TTS service (synthesize + synthesize_async), lifespan voice loading, config constants, tests
 
 ### Phase 3: HTTP API Layer
 **Goal**: A single POST /analyze endpoint accepts an image, runs the full local pipeline, and returns text description plus base64 audio in one JSON response under 3 seconds
