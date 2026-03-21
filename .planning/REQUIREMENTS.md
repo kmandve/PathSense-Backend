@@ -14,12 +14,12 @@
 ### Vision Analysis
 
 - [x] **VIS-01**: Moondream2 4-bit quantized model loads on GTX 1650 within 4GB VRAM budget
-- [ ] **VIS-02**: Model analyzes image and produces navigation-focused text description
+- [x] **VIS-02**: Model analyzes image and produces navigation-focused text description
 - [ ] **VIS-03**: Descriptions identify obstacles, doors, steps, signs, and people
-- [ ] **VIS-04**: Descriptions include distance/proximity language ("2 meters ahead", "on your left")
-- [ ] **VIS-05**: Descriptions end with actionable directional framing ("clear left, obstacle right")
-- [ ] **VIS-06**: Output is constrained to 1-2 short sentences (under 15 words target)
-- [ ] **VIS-07**: Navigation-optimized system prompt drives description quality
+- [x] **VIS-04**: Descriptions include distance/proximity language ("2 meters ahead", "on your left")
+- [x] **VIS-05**: Descriptions end with actionable directional framing ("clear left, obstacle right")
+- [x] **VIS-06**: Output is constrained to 1-2 short sentences (under 15 words target)
+- [x] **VIS-07**: Navigation-optimized system prompt drives description quality
 
 ### Text-to-Speech
 
@@ -81,12 +81,12 @@
 | IMG-02 | Phase 1 | Pending |
 | IMG-03 | Phase 1 | Pending |
 | VIS-01 | Phase 1 | Complete |
-| VIS-02 | Phase 1 | Pending |
+| VIS-02 | Phase 1 | Complete |
 | VIS-03 | Phase 1 | Pending |
-| VIS-04 | Phase 1 | Pending |
-| VIS-05 | Phase 1 | Pending |
-| VIS-06 | Phase 1 | Pending |
-| VIS-07 | Phase 1 | Pending |
+| VIS-04 | Phase 1 | Complete |
+| VIS-05 | Phase 1 | Complete |
+| VIS-06 | Phase 1 | Complete |
+| VIS-07 | Phase 1 | Complete |
 | INF-01 | Phase 1 | Complete |
 | INF-02 | Phase 1 | Complete |
 | INF-03 | Phase 1 | Complete |

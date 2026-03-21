@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-foundation 01-01-PLAN.md
-last_updated: "2026-03-21T05:50:14.153Z"
+stopped_at: Completed 01-foundation 01-02-PLAN.md
+last_updated: "2026-03-21T05:53:43.275Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-21)
 ## Current Position
 
 Phase: 01 (foundation) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -47,6 +47,7 @@ Plan: 2 of 3
 
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 3 | 2 tasks | 16 files |
+| Phase 01-foundation P02 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -60,6 +61,8 @@ Recent decisions affecting current work:
 - [Init]: Piper TTS on CPU; leaves all VRAM for vision model
 - [Phase 01-foundation]: Moondream 4-bit checkpoint via transformers device_map={'': 'cuda'} — VRAM constraint requires 4-bit to stay under 4GB GTX 1650
 - [Phase 01-foundation]: Tests mock torch.cuda.is_available() to run on macOS dev machine without CUDA
+- [Phase 01-foundation]: NAVIGATION_PROMPT encodes all six locked decisions (D-01..D-06): calm guidance, nearest hazard first, relative distance only, describe clear scenes, under 15 words, directional framing
+- [Phase 01-foundation]: Single-worker ThreadPoolExecutor with torch.cuda.empty_cache() in finally block for safe non-blocking GPU inference
 
 ### Pending Todos
 
@@ -74,6 +77,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T05:50:14.152Z
-Stopped at: Completed 01-foundation 01-01-PLAN.md
+Last session: 2026-03-21T05:53:43.273Z
+Stopped at: Completed 01-foundation 01-02-PLAN.md
 Resume file: None
