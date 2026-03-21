@@ -58,11 +58,10 @@ Plans:
   2. The base64 audio field decodes to a playable WAV file
   3. End-to-end response time from image upload to JSON response is under 3 seconds on GTX 1650
   4. GET /health returns a response confirming model is loaded and GPU is available, even during active inference
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 03-01: Route wiring (UploadFile ingestion, lifespan model sharing, pipeline orchestration, JSON response builder)
-- [ ] 03-02: Health check endpoint and event-loop non-blocking verification
+- [ ] 03-01-PLAN.md — TTS wiring into analyze route, health endpoint enrichment (model_loaded + vram_reserved_mb), full-pipeline test fixtures and audio response tests
 
 ### Phase 4: Fallback and Hardening
 **Goal**: The API survives local model failure and demo conditions — GPT-4o takes over when Moondream output is bad, and every failure path returns a safe message instead of hanging
@@ -87,5 +86,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-21 |
 | 2. TTS Integration | 1/1 | Complete   | 2026-03-21 |
-| 3. HTTP API Layer | 0/2 | Not started | - |
+| 3. HTTP API Layer | 0/1 | Not started | - |
 | 4. Fallback and Hardening | 0/1 | Not started | - |
