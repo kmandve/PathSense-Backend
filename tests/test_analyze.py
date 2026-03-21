@@ -90,3 +90,48 @@ async def test_description_mentions_navigation_object(async_client, test_image_b
                     "people", "chair", "table", "wall", "curb", "pole", "clear", "path"}
     found = any(word in desc_lower for word in hazard_words)
     assert found, f"No navigation object found in: {data['description']}"
+
+
+@pytest.mark.asyncio
+async def test_response_contains_audio_field(async_client_full, test_image_bytes):
+    """API-01: Response includes both description and audio fields."""
+    response = await async_client_full.post(
+        "/analyze",
+        files={"file": ("test.jpg", test_image_bytes, "image/jpeg")},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert "description" in data
+    assert "audio" in data
+
+
+@pytest.mark.asyncio
+async def test_audio_field_is_base64_string(async_client_full, test_image_bytes):
+    """API-02: Audio field is a non-empty base64 string."""
+    response = await async_client_full.post(
+        "/analyze",
+        files={"file": ("test.jpg", test_image_bytes, "image/jpeg")},
+    )
+    data = response.json()
+    assert isinstance(data["audio"], str)
+    assert len(data["audio"]) > 0
+
+
+@pytest.mark.asyncio
+async def test_audio_decodes_to_wav(async_client_full, test_image_bytes):
+    """API-02: base64 audio field decodes to a valid WAV file."""
+    import base64
+    import wave
+    import io as _io
+
+    response = await async_client_full.post(
+        "/analyze",
+        files={"file": ("test.jpg", test_image_bytes, "image/jpeg")},
+    )
+    data = response.json()
+    wav_bytes = base64.b64decode(data["audio"])
+    # wave.open raises wave.Error if not a valid WAV
+    with wave.open(_io.BytesIO(wav_bytes)) as wf:
+        assert wf.getnchannels() == 1
+        assert wf.getsampwidth() == 2
+        assert wf.getframerate() == 22050
