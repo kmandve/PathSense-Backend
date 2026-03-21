@@ -29,12 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Descriptions include distance or direction language ("ahead", "left", "right", "meters")
   4. Descriptions are under 15 words and end with a directional framing ("clear path", "obstacle right")
   5. 20 sequential inference calls complete without OOM error or VRAM growth
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 01-01: Project scaffold, dependency pinning, and FastAPI app skeleton with lifespan handler
-- [ ] 01-02: Moondream 4-bit model loading on CUDA with VRAM verification and run_in_executor wiring
-- [ ] 01-03: Image ingestion (multipart validation, format check, resize) and navigation-optimized prompt
+- [ ] 01-01-PLAN.md — Project scaffold, dependencies, FastAPI app with lifespan model loading, health check, test infrastructure
+- [ ] 01-02-PLAN.md — Vision service with navigation prompt (D-01..D-06), inference function, run_in_executor wiring
+- [ ] 01-03-PLAN.md — POST /analyze endpoint with image validation, integration tests, soak test (20 sequential inferences)
 
 ### Phase 2: TTS Integration
 **Goal**: Navigation text produced by Phase 1 is synthesized into spoken WAV audio locally on CPU in under 1 second
