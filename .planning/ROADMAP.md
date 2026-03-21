@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - GPU model loads, image ingested, navigation-focused text produced (completed 2026-03-21)
 - [x] **Phase 2: TTS Integration** - Navigation text converted to spoken WAV audio locally (completed 2026-03-21)
-- [ ] **Phase 3: HTTP API Layer** - Full POST /analyze endpoint returns text + audio in one response
+- [x] **Phase 3: HTTP API Layer** - Full POST /analyze endpoint returns text + audio in one response (completed 2026-03-21)
 - [ ] **Phase 4: Fallback and Hardening** - GPT-4o fallback, quality gate, and safe error path protect the demo
 
 ## Phase Details
@@ -58,10 +58,10 @@ Plans:
   2. The base64 audio field decodes to a playable WAV file
   3. End-to-end response time from image upload to JSON response is under 3 seconds on GTX 1650
   4. GET /health returns a response confirming model is loaded and GPU is available, even during active inference
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
-- [ ] 03-01-PLAN.md — TTS wiring into analyze route, health endpoint enrichment (model_loaded + vram_reserved_mb), full-pipeline test fixtures and audio response tests
+- [x] 03-01-PLAN.md — TTS wiring into analyze route, health endpoint enrichment (model_loaded + vram_reserved_mb), full-pipeline test fixtures and audio response tests
 
 ### Phase 4: Fallback and Hardening
 **Goal**: The API survives local model failure and demo conditions — GPT-4o takes over when Moondream output is bad, and every failure path returns a safe message instead of hanging
@@ -86,5 +86,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-21 |
 | 2. TTS Integration | 1/1 | Complete   | 2026-03-21 |
-| 3. HTTP API Layer | 0/1 | Not started | - |
+| 3. HTTP API Layer | 1/1 | Complete   | 2026-03-21 |
 | 4. Fallback and Hardening | 0/1 | Not started | - |

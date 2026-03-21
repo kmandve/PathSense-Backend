@@ -29,9 +29,9 @@
 
 ### API Response
 
-- [ ] **API-01**: Response includes both text description and audio data
-- [ ] **API-02**: Audio is returned as base64-encoded string in JSON response
-- [ ] **API-03**: End-to-end response time is under 3 seconds (image in → text + audio out)
+- [x] **API-01**: Response includes both text description and audio data
+- [x] **API-02**: Audio is returned as base64-encoded string in JSON response
+- [x] **API-03**: End-to-end response time is under 3 seconds (image in → text + audio out)
 
 ### Fallback
 
@@ -94,9 +94,9 @@
 | TTS-01 | Phase 2 | Complete |
 | TTS-02 | Phase 2 | Complete |
 | TTS-03 | Phase 2 | Complete |
-| API-01 | Phase 3 | Pending |
-| API-02 | Phase 3 | Pending |
-| API-03 | Phase 3 | Pending |
+| API-01 | Phase 3 | Complete |
+| API-02 | Phase 3 | Complete |
+| API-03 | Phase 3 | Complete |
 | FBK-01 | Phase 4 | Pending |
 | FBK-02 | Phase 4 | Pending |
 | FBK-03 | Phase 4 | Pending |

@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 02-tts-integration 02-01-PLAN.md
-last_updated: "2026-03-21T07:00:44.299Z"
+stopped_at: Completed 03-http-api-layer 03-01-PLAN.md
+last_updated: "2026-03-21T07:14:07.488Z"
 progress:
   total_phases: 4
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  completed_phases: 3
+  total_plans: 5
+  completed_plans: 5
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** A blind user presses a button and within seconds hears a clear, actionable description of what's directly ahead
-**Current focus:** Phase 02 — tts-integration
+**Current focus:** Phase 03 — http-api-layer
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
+Phase: 03 (http-api-layer) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -50,6 +50,7 @@ Plan: Not started
 | Phase 01-foundation P02 | 2 | 2 tasks | 2 files |
 | Phase 01-foundation P03 | 85s | 2 tasks | 4 files |
 | Phase 02-tts-integration P01 | 4min | 2 tasks | 6 files |
+| Phase 03-http-api-layer P01 | 5min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,9 @@ Recent decisions affecting current work:
 - [Phase 02-tts-integration]: Use asyncio.get_running_loop() for run_in_executor dispatch — avoids DeprecationWarning in Python 3.10+
 - [Phase 02-tts-integration]: Piper TTS on CPU onnxruntime (not onnxruntime-gpu) to keep VRAM free for vision model
 - [Phase 02-tts-integration]: PiperVoice loaded once at lifespan startup into app.state.tts_voice — not lazily per-request
+- [Phase 03-http-api-layer]: app_with_model fixture updated to also set tts_voice — analyze now requires both for end-to-end flow
+- [Phase 03-http-api-layer]: autouse mock_run_inference fixture patches run_inference_async globally — no real GPT-4o calls during tests
+- [Phase 03-http-api-layer]: Lazy OpenAI client (_get_client) in vision.py avoids ImportError when OPENAI_API_KEY is absent
 
 ### Pending Todos
 
@@ -85,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T06:58:02.502Z
-Stopped at: Completed 02-tts-integration 02-01-PLAN.md
+Last session: 2026-03-21T07:14:07.487Z
+Stopped at: Completed 03-http-api-layer 03-01-PLAN.md
 Resume file: None
