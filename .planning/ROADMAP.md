@@ -12,7 +12,7 @@ PathSense is a four-phase build that moves risk-first: prove the GPU model loads
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - GPU model loads, image ingested, navigation-focused text produced
+- [x] **Phase 1: Foundation** - GPU model loads, image ingested, navigation-focused text produced (completed 2026-03-21)
 - [ ] **Phase 2: TTS Integration** - Navigation text converted to spoken WAV audio locally
 - [ ] **Phase 3: HTTP API Layer** - Full POST /analyze endpoint returns text + audio in one response
 - [ ] **Phase 4: Fallback and Hardening** - GPT-4o fallback, quality gate, and safe error path protect the demo
@@ -29,12 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Descriptions include distance or direction language ("ahead", "left", "right", "meters")
   4. Descriptions are under 15 words and end with a directional framing ("clear path", "obstacle right")
   5. 20 sequential inference calls complete without OOM error or VRAM growth
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 01-01-PLAN.md — Project scaffold, dependencies, FastAPI app with lifespan model loading, health check, test infrastructure
 - [x] 01-02-PLAN.md — Vision service with navigation prompt (D-01..D-06), inference function, run_in_executor wiring
-- [ ] 01-03-PLAN.md — POST /analyze endpoint with image validation, integration tests, soak test (20 sequential inferences)
+- [x] 01-03-PLAN.md — POST /analyze endpoint with image validation, integration tests, soak test (20 sequential inferences)
 
 ### Phase 2: TTS Integration
 **Goal**: Navigation text produced by Phase 1 is synthesized into spoken WAV audio locally on CPU in under 1 second
@@ -85,7 +85,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In Progress|  |
+| 1. Foundation | 3/3 | Complete   | 2026-03-21 |
 | 2. TTS Integration | 0/1 | Not started | - |
 | 3. HTTP API Layer | 0/2 | Not started | - |
 | 4. Fallback and Hardening | 0/1 | Not started | - |

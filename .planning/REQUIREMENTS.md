@@ -7,15 +7,15 @@
 
 ### Image Ingestion
 
-- [ ] **IMG-01**: API accepts image upload via HTTP POST (multipart/form-data)
-- [ ] **IMG-02**: API validates uploaded file is a supported image format (JPEG, PNG)
-- [ ] **IMG-03**: API resizes image to model's expected input dimensions before inference
+- [x] **IMG-01**: API accepts image upload via HTTP POST (multipart/form-data)
+- [x] **IMG-02**: API validates uploaded file is a supported image format (JPEG, PNG)
+- [x] **IMG-03**: API resizes image to model's expected input dimensions before inference
 
 ### Vision Analysis
 
 - [x] **VIS-01**: Moondream2 4-bit quantized model loads on GTX 1650 within 4GB VRAM budget
 - [x] **VIS-02**: Model analyzes image and produces navigation-focused text description
-- [ ] **VIS-03**: Descriptions identify obstacles, doors, steps, signs, and people
+- [x] **VIS-03**: Descriptions identify obstacles, doors, steps, signs, and people
 - [x] **VIS-04**: Descriptions include distance/proximity language ("2 meters ahead", "on your left")
 - [x] **VIS-05**: Descriptions end with actionable directional framing ("clear left, obstacle right")
 - [x] **VIS-06**: Output is constrained to 1-2 short sentences (under 15 words target)
@@ -77,12 +77,12 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IMG-01 | Phase 1 | Pending |
-| IMG-02 | Phase 1 | Pending |
-| IMG-03 | Phase 1 | Pending |
+| IMG-01 | Phase 1 | Complete |
+| IMG-02 | Phase 1 | Complete |
+| IMG-03 | Phase 1 | Complete |
 | VIS-01 | Phase 1 | Complete |
 | VIS-02 | Phase 1 | Complete |
-| VIS-03 | Phase 1 | Pending |
+| VIS-03 | Phase 1 | Complete |
 | VIS-04 | Phase 1 | Complete |
 | VIS-05 | Phase 1 | Complete |
 | VIS-06 | Phase 1 | Complete |
