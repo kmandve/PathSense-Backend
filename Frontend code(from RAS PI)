@@ -1,0 +1,134 @@
+import cv2
+import requests
+import base64
+import pygame
+import io
+import time
+import RPi.GPIO as GPIO
+import subprocess
+
+# ==============================
+# CHANGE THIS to your server IP
+SERVER_IP = "73.111.218.118"
+# ==============================
+
+BUTTON_PIN = 17
+
+API_URL = f"http://{SERVER_IP}:8000"
+
+def check_server():
+    try:
+        resp = requests.get(f"{API_URL}/health", timeout=5)
+        if resp.status_code == 200:
+            print("✅ Server is ready!")
+            return True
+        else:
+            print("❌ Server not ready yet")
+            return False
+    except Exception as e:
+        print(f"❌ Can't reach server: {e}")
+        return False
+
+def capture_frame(camera):
+    ret, frame = camera.read()
+    if not ret:
+        print("❌ Failed to capture frame")
+        return None
+    _, buffer = cv2.imencode('.jpg', frame)
+    return buffer.tobytes()
+
+def analyze_image(image_bytes):
+    try:
+        resp = requests.post(
+            f"{API_URL}/analyze",
+            files={"file": ("photo.jpg", image_bytes, "image/jpeg")},
+            timeout=15
+        )
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            print(f"❌ API error {resp.status_code}: {resp.json()}")
+            return None
+    except Exception as e:
+        print(f"❌ Request failed: {e}")
+        return None
+
+def play_audio(audio_base64):
+    try:
+        audio_bytes = base64.b64decode(audio_base64)
+        pygame.mixer.music.load(io.BytesIO(audio_bytes))
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            time.sleep(0.1)
+    except Exception as e:
+        print(f"❌ Audio playback failed: {e}")
+
+def main():
+    # Initialize pygame audio
+    pygame.mixer.init(frequency=22050, size=-16, channels=1, buffer=512)
+
+    # Setup button
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+    # Check server is up before starting
+    print("Checking server...")
+    while not check_server():
+        print("Retrying in 5 seconds...")
+        time.sleep(5)
+
+    # Open webcam
+    camera = cv2.VideoCapture(0)
+    if not camera.isOpened():
+        print("❌ Could not open webcam")
+        return
+
+    print("🎥 Ready — press the button to scan!")
+
+    try:
+        while True:
+            if GPIO.input(BUTTON_PIN) == GPIO.LOW:
+                print("🔘 Button pressed!")
+
+                # Flush camera buffer completely
+                for _ in range(5):
+                    camera.read()
+
+                # Now capture fresh frame
+                image_bytes = capture_frame(camera)
+                if image_bytes is None:
+                    continue
+
+                # Save and open image to check it
+                with open("captured.jpg", "wb") as f:
+                    f.write(image_bytes)
+                subprocess.run(["pkill", "-f", "eog"])
+                time.sleep(0.3)
+                subprocess.Popen(["eog", "--new-instance", "captured.jpg"])
+
+                # Send to AI
+                print("📡 Sending to AI...")
+                result = analyze_image(image_bytes)
+                if result is None:
+                    continue
+
+                # Print description
+                print(f"🗣️ {result['description']}")
+
+                # Play audio response
+                play_audio(result["audio"])
+
+                # Debounce so one press = one scan
+                time.sleep(1)
+
+            time.sleep(0.05)
+
+    except KeyboardInterrupt:
+        print("\nStopped.")
+    finally:
+        camera.release()
+        GPIO.cleanup()
+        pygame.mixer.quit()
+
+if __name__ == "__main__":
+    main()
